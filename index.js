@@ -16,6 +16,28 @@ async function connect(){
 }
 connect()
 
+app.get('/books', async (req, res) => {
+
+
+    const cursor = await bookscollection.find({})
+    const result = await cursor.toArray()
+
+    res.status(200).json(result)
+})
+
+
+app.get('/books/:id', async (req, res) =>{
+    let id = req.params.id
+    
+
+    const book = await bookscollection.findOne({ _id: ObjectId(id)})
+
+
+    res.status(200).json(book)
+
+})
+
+
 app.post('/books', async (req, res) => {
 
     //input*
