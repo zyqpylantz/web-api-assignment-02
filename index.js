@@ -4,6 +4,24 @@ const app = express()
 app.use(express.json())
 let books = []
 
+app.get('/books', (req, res) => {
+
+
+
+    res.status(200).json(books)
+
+
+})
+app.get('/books/:id', (req, res) => {
+    let id = req.params.id
+    let book= {}
+
+    book = books[id]
+
+
+        res.status(200).json(movie)
+})
+
 app.post('/books', (req, res) => {
 
     //input*
